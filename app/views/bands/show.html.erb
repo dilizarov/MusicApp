@@ -1,0 +1,16 @@
+<h1><%= render :partial => 'band', :locals => { :band => @band } %></h1>
+<% @band.albums.each do |album|%>
+
+  <%= link_to( album.name , album_url(album) ) %>,
+	<%= album.album_type%>
+	<br>
+	<ol>
+	<% album.tracks.each do |track| %>
+	  <li><%= link_to( track.name , track_url(Track.find_by_name(track.name).id) ) %>, <%=track.track_type%></li>
+		<br>
+	<% end %>
+	</ol>
+<% end %>
+<br><br>
+<%= button_to "Delete", band_url, { :method => :delete, :data => {
+:confirm => "Are you sure?" } } %>

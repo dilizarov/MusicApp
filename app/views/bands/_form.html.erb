@@ -1,0 +1,12 @@
+<% action_url = (action == :new) ? bands_url : band_url %>
+
+<form action="<%= action_url %>" method="post">
+	<% if action == :edit %>
+		<input type="hidden" name="_method" value="put" />
+	<% end %>
+
+	<label for="band_name">Band</label>
+		<input type="text" name="band[name]" id="band_name" value="<%= band.name %>">
+
+	<input type="submit" value="Submit">
+</form>

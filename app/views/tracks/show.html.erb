@@ -1,0 +1,18 @@
+<h1><%= render :partial => 'track', :locals => { :track => @track } %></h1>
+<h2><%= link_to(@track.album.band.name, band_url(@track.album.band)) %></h2>
+<h3><%= link_to(@track.album.name, album_url(@track.album)) %></h3>
+<br>
+<%= @track.lyrics %>
+<br><br>
+
+<%= render :partial => 'note', :locals => { :track => @track } %>
+
+<form action="<%= notes_url %>" method="post">
+	<input type="hidden" name="note[track_id]" value="<%=@track.id%>">
+	<textarea name="note[text]" id="note_text">Create a new note</textarea>
+	<input type="submit" value="Submit">
+</form>
+
+<br><br>
+<%= button_to "Delete", track_url, { :method => :delete, :data => {
+:confirm => "Are you sure?" } } %>

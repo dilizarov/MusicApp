@@ -1,0 +1,7 @@
+<ul>
+	<% track.notes.each do |note|%>
+		<%= note.text %>
+	<%= button_to "Delete", note_url(note), { :method => :delete, :data => {
+		:confirm => "Are you sure?" } } %>
+	<% end %>
+</ul>
